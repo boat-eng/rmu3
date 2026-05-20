@@ -1,0 +1,8 @@
+Options -Indexes
+
+# ---- Large file upload support for mod_fcgid (WAMP) ----
+<IfModule mod_fcgid.c>
+    FcgidMaxRequestLen 22548578304
+    FcgidIOTimeout 7200
+    FcgidBusyTimeout 7200
+</IfModule>

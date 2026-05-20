@@ -1,0 +1,115 @@
+====================================================
+  RMU E-LEARNING PLATFORM — SETUP INSTRUCTIONS
+====================================================
+
+STEP 1 — Copy the folder
+------------------------
+Copy the entire project folder into:
+  C:\wamp64\www\rmu3\
+
+Folder structure expected:
+  rmu3/
+    index.php
+    logout.php
+    includes/
+      config.php
+      layout.php
+    instructor/
+      dashboard.php, courses.php, manage.php, upload.php,
+      students.php, profile.php
+    student/
+      dashboard.php, browse.php, enrolled.php, progress.php,
+      watch.php, profile.php
+    admin/
+      dashboard.php, profile.php
+    uploads/   ← create this folder, give write permissions
+
+
+STEP 2 — Create the database
+-----------------------------
+1. Open: http://localhost/phpmyadmin
+2. Click the "SQL" tab
+3. Paste the entire contents of database.sql and click "Go"
+
+
+STEP 3 — Allow large video uploads
+------------------------------------
+Edit php.ini via WAMP tray → PHP → php.ini:
+  upload_max_filesize = 512M
+  post_max_size       = 512M
+  max_execution_time  = 300
+  max_input_time      = 300
+Restart WAMP after saving.
+
+
+STEP 4 — Open the platform
+-----------------------------
+  http://localhost/rmu3
+
+====================================================
+  DEMO LOGIN CREDENTIALS  (password: password123)
+====================================================
+
+ADMIN
+  Email:    admin@rmu.edu.gh
+  Password: password123
+
+INSTRUCTOR
+  Email:    kwame.mensah@rmu.edu.gh
+  Password: password123
+
+STUDENT
+  Email:    ama.asante@st.rmu.edu.gh
+  Password: password123
+
+====================================================
+  ROLES & CAPABILITIES
+====================================================
+
+ADMIN
+  - Create and delete courses (assigns to instructor, sets level 100-400)
+  - Add students and instructors manually
+  - Enable/disable user accounts
+  - View all users and courses on one dashboard
+
+INSTRUCTOR
+  - Upload video lectures and slide files to assigned courses
+  - Publish / unpublish courses
+  - View enrolled students
+  - Manage lessons (preview, delete)
+  (Instructors can no longer create courses — admin does that)
+
+STUDENT
+  - Browse all published courses and enroll
+  - Watch video lectures in built-in HD player
+  - View PDF slides in browser, download PPTX/DOC
+  - Mark lessons complete (or auto-complete on video end)
+  - Track progress per course
+
+====================================================
+  COURSE LEVELS
+====================================================
+Courses use academic levels instead of difficulty:
+  Level 100 — First year
+  Level 200 — Second year
+  Level 300 — Third year
+  Level 400 — Final year
+
+====================================================
+  TROUBLESHOOTING
+====================================================
+
+"Database connection failed"
+  → Check includes/config.php has correct DB settings
+  → Make sure database.sql was run in phpMyAdmin
+
+"Upload error: File too large"
+  → Complete STEP 3 to increase PHP limits
+
+"Upload folder not writable"
+  → Right-click uploads/ → Properties → Security
+  → Give "Users" full control
+
+"Page not found"
+  → Make sure folder is named exactly "rmu3"
+  → Go to http://localhost/rmu3
